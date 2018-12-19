@@ -4,11 +4,11 @@
 
 ## 基本用法
 ``` bash
-$ npm install -g vue-cli
+$ yarn add global vue-cli
 $ vue init mpvue/mpvue-quickstart my-project
 $ cd my-project
-$ npm install
-$ npm run dev
+$ yarn
+$ yarn dev
 ```
 
 更多详细文档请查阅 [quickstart](http://mpvue.com/mpvue/quickstart/)。
