@@ -1,4 +1,6 @@
 <script>
+import 'wx-promise-pro'
+
 export default {
   created{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     // 调用API从本地缓存中获取数据
@@ -12,6 +14,9 @@ export default {
 </script>
 
 <style>
+@import "../static/fontawesome/fontawesome-4.7.0.wxss";
+@import "../static/vuetify/vuetify.min.wxss";
+
 .container {
   height: 100%;
   display: flex;

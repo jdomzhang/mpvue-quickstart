@@ -1,3 +1,6 @@
+var shell = require('shelljs');
+shell.cp('-f', './src/services/apiroot.prod.js', './src/services/apiroot.autogen.js')
+
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'

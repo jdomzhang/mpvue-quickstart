@@ -1,3 +1,6 @@
+var shell = require('shelljs');
+shell.cp('-f', './src/services/apiroot.dev.js', './src/services/apiroot.autogen.js')
+
 require('./check-versions')()
 
 process.env.PLATFORM = process.argv[process.argv.length - 1] || 'wx'
