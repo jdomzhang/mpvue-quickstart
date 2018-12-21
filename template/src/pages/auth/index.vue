@@ -59,7 +59,7 @@ export default {
   methods: {
     async onGetUserInfo (event) {
       if (event.mp.detail.errMsg.indexOf(':ok') === -1) {
-        console.log('you cancelled auth.')
+        this.log('you cancelled auth.')
         return
       }
 

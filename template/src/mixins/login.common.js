@@ -32,12 +32,14 @@ export default {
 
     async doLogin () {
       this.log('doing login...')
+      var user = null
+
       try {
         var result = await wx.pro.login()
-        var user = await login(result.code)
+        user = await login(result.code)
 
         // save user
-        getApp().globalData.user = user
+        this.app.user = user
         this.log('API login as user', user)
 
         // refresh user data
@@ -47,6 +49,8 @@ export default {
       } catch (e) {
         this.log('login error:', e)
       }
+
+      return user
     },
 
     async refreshUserData (user) {
@@ -66,7 +70,7 @@ export default {
         }
         user = await getWXUserInfo(data)
         this.log('refresh user info result', user)
-        getApp().globalData.user = user
+        this.app.user = user
       }
     }
   }

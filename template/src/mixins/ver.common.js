@@ -8,7 +8,7 @@ export default {
   },
   computed: {
     versionNumber () {
-      return getApp().globalData.v || this.v
+      return this.app.v || this.v
     }
   },
   async onShow () {
@@ -17,7 +17,7 @@ export default {
       var obj = await getVersion()
       v = obj.version
       this.v = v
-      getApp().globalData.v = v
+      this.app.v = v
     }
   },
   methods: {

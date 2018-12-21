@@ -7,12 +7,6 @@ export default {
     }
   },
 
-  computed: {
-    globalData () {
-      return getApp().globalData
-    }
-  },
-
   methods: {
     log () {
       if (debug) {

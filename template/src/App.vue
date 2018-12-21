@@ -3,17 +3,46 @@ import 'wx-promise-pro'
 import baseCommon from '@/mixins/base.common'
 import authCommon from '@/mixins/auth.common'
 import loginCommon from '@/mixins/login.common'
+import { apiRoot } from '@/services/apiroot.autogen'
 
 export default {
   mixins: [baseCommon, authCommon, loginCommon],
 
+  data () {
+    return {
+      shouldCheckToken: false
+    }
+  },
+
   async onLaunch (options) {
+    this.log('apiRoot', apiRoot)
+
     this.saveAppOptions(options)
-    await this.checkUserAuth()
+
+    // force login first time in anyway
+    try { await this.doLogin() } catch (e) {}
+
+    // check if user has agreed to use this weapp
+    // if no, redirect to auth page
+    let userAgreed = await this.checkUserAuth()
+    if (!userAgreed) {
+      wx.reLaunch({
+        url: `/pages/auth/main`
+      })
+    }
   },
 
   async onShow () {
-    await this.checkUserLogin()
+    this.log('app show...........................')
+    // if app hide and show again, should check token
+    if (this.shouldCheckToken) {
+      await this.checkUserLogin()
+    }
+  },
+
+  onHide () {
+    this.log('app hide...........................')
+    this.shouldCheckToken = true
   },
 
   methods: {
@@ -28,20 +57,4 @@ export default {
 @import "../static/fontawesome/fontawesome-4.7.0.wxss";
 @import "../static/vuetify/vuetify.min.wxss";
 
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}
-/* this rule will be remove */
-* {
-  transition: width 2s;
-  -moz-transition: width 2s;
-  -webkit-transition: width 2s;
-  -o-transition: width 2s;
-}
 </style>

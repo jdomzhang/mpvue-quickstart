@@ -21,7 +21,11 @@ export default {
     }
   },
 
-  methods: {
+  async beforeMount () {
+    if (!this.app.user) {
+      this.log('user is not available yet.............................................................')
+    }
+    this.log('user', this.app.user)
   }
 }
 </script>

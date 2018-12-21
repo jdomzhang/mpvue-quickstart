@@ -17,11 +17,7 @@ export default {
       // set has user authorized
       this.log('hasUserAuthorized:', hasUserAuthorized)
 
-      if (!hasUserAuthorized) {
-        wx.reLaunch({
-          url: `/pages/auth/main`
-        })
-      }
+      return hasUserAuthorized
     }
   }
 }
