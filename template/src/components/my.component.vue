@@ -4,7 +4,7 @@
       Hello Component
     </div>
     <div class="caption">
-    API Root: {{apiRoot}}
+    API Root: <span v-text="apiRoot"></span>
     </div>
   </div>
 </template>

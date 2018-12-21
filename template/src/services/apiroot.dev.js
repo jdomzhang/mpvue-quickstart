@@ -1,3 +1,3 @@
-export const apiRoot = 'http://localhost:9090'
+export const apiRoot = 'http://{{devapiRoot}}'
 
 export const debug = true

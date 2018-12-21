@@ -30,6 +30,16 @@ module.exports = {
       "type": "string",
       "message": "Author"
     },
+    "devapiRoot": {
+      "type": "string",
+      "message": "API root (dev)",
+      "default": "localhost:9090"
+    },
+    "apiRoot": {
+      "type": "string",
+      "message": "API root (prod)",
+      "default": "api.yourdomain.com"
+    },
     "build": {
       "type": "list",
       "message": "Vue build",

@@ -1,6 +1,12 @@
 import { apiRoot, debug } from './apiroot.autogen'
 var Fly = require('flyio/dist/npm/wx')
 
+function log () {
+  if (debug) {
+    console.log.apply(null, arguments)
+  }
+}
+
 export default async (x, data, method = 'GET') => {
   var url = apiRoot + x
   var fly = createFly()
@@ -15,9 +21,7 @@ export const createFly = () => {
   var fly = new Fly()
 
   fly.interceptors.request.use((request) => {
-    if (debug) {
-      console.log('>>> request', request)
-    }
+    log('>>> request', request)
 
     wx.showLoading()
     var token = wx.getStorageSync('authorization')
@@ -30,21 +34,22 @@ export const createFly = () => {
 
   fly.interceptors.response.use(
     (response) => {
-      if (debug) {
-        console.log('<<< response', response)
-      }
+      log('<<< response', response)
 
       wx.hideLoading()
-      if (response.headers.authorization) {
-        wx.setStorageSync('authorization', response.headers.authorization)
+      let token = response.headers.authorization
+      if (token && typeof token === 'object' && token.length > 0) {
+        token = token[0]
+      }
+      if (token) {
+        log('saving authorization', token)
+        wx.setStorageSync('authorization', token)
       }
       return response.data
     },
     (err) => {
       wx.hideLoading()
-      if (debug) {
-        console.log('!!! err', err)
-      }
+      log('!!! err', err)
 
       // unauthorized
       if (err.response && err.response.status === 401) {
@@ -55,7 +60,7 @@ export const createFly = () => {
         return
       }
       // 发生网络错误后会走到这里
-      console.log('网络错误', JSON.stringify(err.response) || '')
+      log('网络错误', JSON.stringify(err.response) || '')
       wx.showModal({
         title: '网络错误',
         content: JSON.stringify(err.response && err.response.data) || err.message || '',

@@ -1,3 +1,3 @@
-export const apiRoot = 'https://youxin-teaapi.edesoft.com'
+export const apiRoot = 'https://{{apiRoot}}'
 
 export const debug = false

@@ -1,16 +1,27 @@
 <script>
 import 'wx-promise-pro'
+import baseCommon from '@/mixins/base.common'
+import authCommon from '@/mixins/auth.common'
+import loginCommon from '@/mixins/login.common'
 
 export default {
-  created{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
-    // 调用API从本地缓存中获取数据
-    const logs = wx.getStorageSync('logs') || []{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    logs.unshift(Date.now()){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    wx.setStorageSync('logs', logs){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  mixins: [baseCommon, authCommon, loginCommon],
 
-    console.log('app created and cache logs by setStorageSync'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  async onLaunch (options) {
+    this.saveAppOptions(options)
+    await this.checkUserAuth()
+  },
+
+  async onShow () {
+    await this.checkUserLogin()
+  },
+
+  methods: {
+    saveAppOptions (options) {
+      wx.setStorageSync('appOptions', options)
+    }
+  }
+}
 </script>
 
 <style>

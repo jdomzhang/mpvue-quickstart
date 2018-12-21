@@ -1,24 +1,36 @@
-function formatNumber{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}(n) {
-  const str = n.toString(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  return str[1] ? str : `0${str}`{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+export const formatNumber = (n) => {
+  const str = n.toString()
+  return str[1] ? str : `0${str}`
 }
 
-export function formatTime{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}(date) {
-  const year = date.getFullYear(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  const month = date.getMonth() + 1{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  const day = date.getDate(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+export const formatTime = (date) => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
 
-  const hour = date.getHours(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  const minute = date.getMinutes(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  const second = date.getSeconds(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
 
-  const t1 = [year, month, day].map(formatNumber).join('/'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  const t2 = [hour, minute, second].map(formatNumber).join(':'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  const t1 = [year, month, day].map(formatNumber).join('/')
+  const t2 = [hour, minute, second].map(formatNumber).join(':')
 
-  return `${t1} ${t2}`{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  return `${t1} ${t2}`
 }
 
-export default {
-  formatNumber,
-  formatTime{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+export const getFullURL = (appOptions) => {
+  if (!appOptions) return null
+  var url = appOptions.path || ''
+  var params = []
+  var query = appOptions.query || {}
+  for (var x in query) {
+    params.push(x + '=' + query[x])
+  }
+  if (params.length > 0) {
+    url = url + '?' + params.join('&')
+  }
+  if (url && !url.startsWith('/')) {
+    url = `/${url}`
+  }
+  return url
+}

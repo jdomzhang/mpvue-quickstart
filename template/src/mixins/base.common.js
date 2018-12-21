@@ -1,4 +1,4 @@
-import { apiRoot } from '@/services/apiroot.autogen'
+import { apiRoot, debug } from '@/services/apiroot.autogen'
 
 export default {
   data () {
@@ -6,6 +6,18 @@ export default {
       apiRoot: apiRoot
     }
   },
+
+  computed: {
+    globalData () {
+      return getApp().globalData
+    }
+  },
+
   methods: {
+    log () {
+      if (debug) {
+        console.log.apply(null, arguments)
+      }
+    }
   }
 }
