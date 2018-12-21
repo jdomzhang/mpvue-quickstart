@@ -16,8 +16,6 @@ export default {
         token = token.length > 0 ? token[0] : ''
       }
 
-      console.log('token', token)
-
       // if token expired, or is visitor, set flag to relogin
       var obj = token ? JSON.parse(base64decode(token.replace(/.+\.(\w+)\..+/, '$1'))) : {}
       var isExpired = (obj.exp < Date.now() / 1000)

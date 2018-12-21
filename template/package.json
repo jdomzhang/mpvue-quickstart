@@ -11,6 +11,7 @@
     "dev:swan": "node build/dev-server.js swan",
     "start:swan": "npm run dev:swan",
     "build:swan": "node build/build.js swan",
+    "clean": "rm -rf dist/*",
     "dev": "node build/dev-server.js wx",
     "start": "npm run dev",
     "build": "node build/build.js wx"{{#unit}},
