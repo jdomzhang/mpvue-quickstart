@@ -1,6 +1,6 @@
 <template>
-  <div class="mx-2 my-2 green white--text" @click="onClickHello">
-    <div class="headline">
+  <div class="mx-2 my-2 px-3 py-3 green white--text" @click="onClickHello">
+    <div class="headline py-1">
       Hello Component
     </div>
     <div class="caption">
