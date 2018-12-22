@@ -44,18 +44,6 @@ export default {
     }
   },
 
-  async onShow () {
-    // check if user has successful logged
-    try {
-      let user = this.globalData.user || {}
-      if (!user.wechatOpenID) {
-        await this.checkUserLogin()
-      }
-    } catch (error) {
-      this.log(error)
-    }
-  },
-
   methods: {
     async onGetUserInfo (event) {
       if (event.mp.detail.errMsg.indexOf(':ok') === -1) {
