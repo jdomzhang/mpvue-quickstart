@@ -56,5 +56,8 @@ export default {
 <style>
 @import "../static/fontawesome/fontawesome-4.7.0.wxss";
 @import "../static/vuetify/vuetify.min.wxss";
+page {
+  height: 100%;
+}
 
 </style>

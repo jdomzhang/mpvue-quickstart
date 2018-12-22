@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="mx-3 elevation-1 pb-2">
+  <div class="layout align-center justify-center row wrap fill-height">
+    <div class="mx-3 elevation-1 flex xs12">
       <div class="py-5 green white--text text-xs-center">
         请授权
       </div>
@@ -16,6 +16,7 @@
         </div>
       </div>
     </div>
+    <div class="flex xs12">&nbsp;</div>
   </div>
 </template>
 
