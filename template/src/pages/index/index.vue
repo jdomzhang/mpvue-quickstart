@@ -10,8 +10,6 @@
 <script>
 import pageCommon from '@/mixins/page.common'
 import MyComponent from '@/components/my.component'
-import { calculateTax } from '@/services'
-import { getFullURL } from '@/utils'
 
 export default {
   mixins: [pageCommon],
