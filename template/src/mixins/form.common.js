@@ -1,4 +1,4 @@
-import {StoreWechatFormID} from '@/services'
+import { storeWXFormID } from '@/services'
 
 export default {
   methods: {
@@ -7,8 +7,8 @@ export default {
         var formID = e.mp.detail.formId
         if (formID.indexOf(' ') === -1) {
           // don't await, no necessary
-          // before this page will navigate away soon
-          StoreWechatFormID(formID)
+          // because this page will navigate away soon
+          storeWXFormID(formID)
         }
       }
     }

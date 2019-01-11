@@ -40,7 +40,7 @@ export default {
 
         // save user
         this.app.user = user
-        this.log('API login as user', user)
+        // this.log('API login as user', user)
 
         // refresh user data
         // get nickname/avatar from wechat, then save the latest wechat user info to database

@@ -12,6 +12,10 @@ export default async (x, data, method = 'GET') => {
   var fly = createFly()
   if (method === 'GET') {
     return fly.get(url, data)
+  } else if (method === 'PUT') {
+    return fly.put(url, data)
+  } else if (method === 'DELETE') {
+    return fly.delete(url, data)
   } else {
     return fly.post(url, data)
   }
@@ -23,7 +27,9 @@ export const createFly = () => {
   fly.interceptors.request.use((request) => {
     log('>>> request', request)
 
-    wx.showLoading()
+    wx.showLoading({
+      title: '加载中'
+    })
     var token = wx.getStorageSync('authorization')
 
     if (token) {
@@ -62,8 +68,8 @@ export const createFly = () => {
       // 发生网络错误后会走到这里
       log('网络错误', JSON.stringify(err.response) || '')
       wx.showModal({
-        title: '网络错误',
-        content: JSON.stringify(err.response && err.response.data) || err.message || '',
+        title: '错误',
+        content: (err.response && err.response.data && err.response.data.error) || JSON.stringify(err.response && err.response.data) || err.message || '',
         showCancel: false
       })
     }

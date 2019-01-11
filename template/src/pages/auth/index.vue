@@ -33,13 +33,13 @@
 </style>
 
 <script>
-import pageCommon from '@/mixins/page.common'
+import authpageCommon from '@/mixins/authpage.common'
 import loginCommon from '@/mixins/login.common'
 import { getWXUserInfo } from '@/services'
 import { getFullURL } from '@/utils'
 
 export default {
-  mixins: [pageCommon, loginCommon],
+  mixins: [authpageCommon, loginCommon],
   data () {
     return {
     }

@@ -10,6 +10,8 @@
 <script>
 import pageCommon from '@/mixins/page.common'
 import MyComponent from '@/components/my.component'
+import { calculateTax } from '@/services'
+import { getFullURL } from '@/utils'
 
 export default {
   mixins: [pageCommon],
@@ -21,11 +23,16 @@ export default {
     }
   },
 
-  async beforeMount () {
-    if (!this.app.user) {
-      this.log('user is not available yet.............................................................')
+  onLoad (options) {
+    if (options.innerpage) {
+      wx.navigateTo({ url: decodeURIComponent(options.innerpage) })
     }
-    this.log('user', this.app.user)
+  },
+
+  methods: {
+    onUserLoaded (user) {
+      console.log('user loaded on page:', user)
+    }
   }
 }
 </script>
