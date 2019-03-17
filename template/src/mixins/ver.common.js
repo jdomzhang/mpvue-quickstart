@@ -3,7 +3,7 @@ import {getVersion} from '@/services'
 export default {
   data () {
     return {
-      v: '1.0.0'
+      v: '1.0.1'
     }
   },
   computed: {
