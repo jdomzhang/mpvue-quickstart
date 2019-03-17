@@ -5,7 +5,7 @@
 ## 基本用法
 ``` bash
 $ yarn add global vue-cli
-$ vue init mpvue/mpvue-quickstart my-project
+$ vue init jdomzhang/mpvue-weapp-template my-project
 $ cd my-project
 $ yarn
 $ yarn dev
