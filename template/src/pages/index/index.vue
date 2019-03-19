@@ -27,9 +27,22 @@ export default {
     }
   },
 
+  async onPullDownRefresh () {
+    await this.fetchData()
+    wx.stopPullDownRefresh()
+  },
+
+  async onReachBottom () {
+    console.log('reach bottom')
+  },
+
   methods: {
-    onUserLoaded (user) {
+    async onUserLoaded (user) {
       console.log('user loaded on page:', user)
+      await this.fetchData()
+    },
+
+    async fetchData () {
     }
   }
 }
