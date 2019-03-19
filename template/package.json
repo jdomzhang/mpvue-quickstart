@@ -22,11 +22,13 @@
   },
   "dependencies": {
     "flyio": "^0.6.6",
-    "wx-promise-pro": "^2.6.0",
     "mpvue": "^1.0.11"{{#vuex}},
-    "vuex": "^3.0.1"{{/vuex}}
+    "vuex": "^3.0.1"{{/vuex}},
+    "wx-promise-pro": "^2.6.0"
   },
   "devDependencies": {
+    "internal-ip": "^4.2.0",
+    "replace": "^1.1.0",
     "mpvue-loader": "^1.1.2",
     "mpvue-webpack-target": "^1.0.3",
     "mpvue-template-compiler": "^1.0.11",

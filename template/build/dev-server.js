@@ -1,6 +1,16 @@
 var shell = require('shelljs');
 shell.cp('-f', './src/services/apiroot.dev.js', './src/services/apiroot.autogen.js')
 
+var ip = require('internal-ip').v4.sync();
+var replace = require("replace");
+replace({
+  regex: "localhost",
+  replacement: ip,
+  paths: ['./src/services/apiroot.autogen.js'],
+  recursive: false,
+  silent: true,
+});
+
 require('./check-versions')()
 
 process.env.PLATFORM = process.argv[process.argv.length - 1] || 'wx'
