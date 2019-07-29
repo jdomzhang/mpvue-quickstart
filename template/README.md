@@ -4,17 +4,33 @@
 
 ## Build Setup
 
-``` bash
-# install dependencies
+```bash
+# 初始化项目
+vue init mpvue/mpvue-quickstart myproject
+cd myproject
+
+# 安装依赖
 yarn
 
-# serve with hot reload at localhost:8080
+# 开发时构建
 yarn dev
 
-# build for production with minification
+# 打包构建
 yarn build
 
-# build for production and view the bundle analyzer report
+# 指定平台的开发时构建(微信、百度、头条、支付宝)
+yarn dev:wx
+yarn dev:swan
+yarn dev:tt
+yarn dev:my
+
+# 指定平台的打包构建
+yarn build:wx
+yarn build:swan
+yarn build:tt
+yarn build:my
+
+# 生成 bundle 分析报告
 yarn build --report
 {{#unit}}
 
