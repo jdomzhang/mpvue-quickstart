@@ -25,10 +25,13 @@ export default {
 </script>
 
 <style>
-@import "../static/fontawesome/fontawesome-4.7.0.wxss";
-@import "../static/vuetify/vuetify.min.wxss";
+@import '../static/fontawesome/fontawesome-4.7.0.wxss';
+@import '../static/vuetify/vuetify.min.wxss';
+@import '../static/colorui/main.wxss';
+@import '../static/colorui/icon.wxss';
 page {
+  background-color: var(--white);
+  font-size: 16px;
   height: 100%;
 }
-
 </style>
