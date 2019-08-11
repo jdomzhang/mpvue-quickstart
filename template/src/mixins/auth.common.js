@@ -1,6 +1,6 @@
 export default {
   methods: {
-    async checkUserAuth () {
+    async checkUserAuth() {
       this.log('checkUserAuth...')
 
       // check user setting

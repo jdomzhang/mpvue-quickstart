@@ -1,9 +1,9 @@
 import 'wx-promise-pro'
-import {login, getWXUserInfo} from '@/services/index'
+import { login, getWXUserInfo } from '@/services/index'
 
 export default {
   methods: {
-    async checkUserLogin () {
+    async checkUserLogin() {
       this.log('checkUserLogin...')
 
       var beginTick = 0
@@ -17,8 +17,10 @@ export default {
       }
 
       // if token expired, or is visitor, set flag to relogin
-      var obj = token ? JSON.parse(base64decode(token.replace(/.+\.(\w+)\..+/, '$1'))) : {}
-      var isExpired = (obj.exp < Date.now() / 1000)
+      var obj = token
+        ? JSON.parse(base64decode(token.replace(/.+\.(\w+)\..+/, '$1')))
+        : {}
+      var isExpired = obj.exp < Date.now() / 1000
       var isVisitor = !!obj.visitor || !obj.uid
 
       var endTick = Date.now()
@@ -30,7 +32,7 @@ export default {
       }
     },
 
-    async doLogin () {
+    async doLogin() {
       this.log('doing login...')
       var user = null
 
@@ -53,7 +55,7 @@ export default {
       return user
     },
 
-    async refreshUserData (user) {
+    async refreshUserData(user) {
       this.log('refresh user info...')
       // because user has authorized, so we can call directly
       // if A user manually unauthorized it
@@ -209,7 +211,7 @@ const base64DecodeChars = new Array(
 )
 
 // 解码的方法
-const base64decode = str => {
+const base64decode = (str) => {
   var c1, c2, c3, c4
   var i, len, out
   len = str.length

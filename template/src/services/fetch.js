@@ -1,7 +1,7 @@
 import { apiRoot, debug } from './apiroot.autogen'
 var Fly = require('flyio/dist/npm/wx')
 
-function log () {
+function log() {
   if (debug) {
     console.log.apply(null, arguments)
   }
@@ -89,7 +89,11 @@ export const createFly = () => {
       log('网络错误', JSON.stringify(err.response) || '')
       wx.showModal({
         title: '错误',
-        content: (err.response && err.response.data && err.response.data.error) || JSON.stringify(err.response && err.response.data) || err.message || '',
+        content:
+          (err.response && err.response.data && err.response.data.error) ||
+          JSON.stringify(err.response && err.response.data) ||
+          err.message ||
+          '',
         showCancel: false
       })
     }

@@ -3,20 +3,20 @@ import verCommon from '@/mixins/ver.common'
 
 export default {
   mixins: [verCommon],
-  data () {
+  data() {
     return {
       apiRoot: apiRoot
     }
   },
 
   methods: {
-    log () {
+    log() {
       if (debug) {
         console.log.apply(null, arguments)
       }
     },
 
-    formatImageURL (url) {
+    formatImageURL(url) {
       let fullURL = this.versioning(url)
       var hasScheme = RegExp(/[http|https]:\/\//).test(url)
       if (!hasScheme) {
